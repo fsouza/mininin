@@ -9,6 +9,7 @@ import (
 func TestShortenerShouldReceiveTheGeneratorInstanceAndTheNameOfTheDatabases(t *testing.T) {
 	g := GeneratorMock("random")
 	shortener, _ := NewShortener(&g, "/tmp/urls.kch", "/tmp/visits.kch")
+	defer shortener.CloseDbs()
 
 	if shortener.g.Generate() != g.Generate() {
 		t.Errorf("Should store the generator with shortener")
@@ -21,6 +22,7 @@ func TestShortenerShouldStoreInternalInstancesOfTheUrlDatabaseInWriteMode(t *tes
 
 	g := GeneratorMock("random")
 	shortener, _ := NewShortener(&g, "/tmp/urls.kch", "/tmp/visits.kch")
+	defer shortener.CloseDbs()
 
 	typeUrlDb := reflect.TypeOf(shortener.urlsDb)
 	if typeUrlDb != reflect.TypeOf(tmpDb) || shortener.urlsDb == nil {
@@ -34,6 +36,7 @@ func TestShortenerShouldStoreInternalInstanceOfTheVisitsDatabaseInWriteMode(t *t
 
 	g := GeneratorMock("random")
 	shortener, _ := NewShortener(&g, "/tmp/urls.kch", "/tmp/visits.kch")
+	defer shortener.CloseDbs()
 
 	typeVisitsDb := reflect.TypeOf(shortener.visitsDb)
 	if typeVisitsDb != reflect.TypeOf(tmpDb) || shortener.visitsDb == nil {

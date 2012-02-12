@@ -33,3 +33,8 @@ func NewShortener(g Generator, urlsDbName, visitsDbName string) (*Shortener, err
 
 	return s, nil
 }
+
+func (s *Shortener) CloseDbs() {
+	s.urlsDb.Close()
+	s.visitsDb.Close()
+}
