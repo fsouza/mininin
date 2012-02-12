@@ -2,4 +2,7 @@ Experimental url shortener, using Go and Kyoto Cabinet.
 
 Dependencies
 
-- uniuri: https://github.com/dchest/uniuri
+- uniuri
+    % go get github.com/dchest/uniuri
+- gokabinet
+    % go get github.com/fsouza/gokabinet
