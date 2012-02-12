@@ -1,0 +1,5 @@
+Experimental url shortener, using Go and Kyoto Cabinet.
+
+Dependencies
+
+- uniuri: https://github.com/dchest/uniuri
